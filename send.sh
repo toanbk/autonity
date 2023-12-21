@@ -3,8 +3,9 @@
 # change sendto wallet
 # change pass your wallet
 
-current=$(date +%s)
-sendto=`curl https://raw.githubusercontent.com/toanbk/autonity/main/wallet.txt?v=$current`
+# current=$(date +%s)
+# sendto=`curl https://raw.githubusercontent.com/toanbk/autonity/main/wallet.txt?v=$current`
+sendto=$(< ./wallet.txt)
 pass=123123
 
 echo "Today will set to wallet address: $sendto"
@@ -18,4 +19,3 @@ do
      n=$((n+1))
 
 done
-
