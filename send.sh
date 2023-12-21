@@ -12,7 +12,7 @@ n=1
 while :
 do
      echo "send $n"
-     aut tx make --to $sendto --value 1  | aut tx sign --password $pass - | aut tx send - && sleep 3
+     aut tx make --to $sendto --value 1  | aut tx sign --password $pass - | aut tx send - && sleep 2
 
      n=$((n+1))
 
