@@ -5,7 +5,7 @@
 
 # current=$(date +%s)
 # sendto=`curl https://raw.githubusercontent.com/toanbk/autonity/main/wallet.txt?v=$current`
-sendto=$(<wallet.txt)
+sendto=`cat ./wallet.txt`
 pass=123123
 
 echo "Today will set to wallet address: $sendto"
