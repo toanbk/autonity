@@ -5,17 +5,30 @@
 
 # current=$(date +%s)
 # sendto=`curl https://raw.githubusercontent.com/toanbk/autonity/main/wallet.txt?v=$current`
-sendto=`cat ./wallet.txt`
-pass=123123
 
-echo "Today will set to wallet address: $sendto"
+# Check if the file exists
+file="wallet.txt"
+if [ ! -f "$file" ]; then
+    echo "File $file not found."
+    exit 1
+fi
+
+password=123123
 
 n=1
 while :
 do
-     echo "send $n"
-     aut tx make --to $sendto --value 0.3  | aut tx sign --password $pass - | aut tx send - && sleep 3
+     while IFS= read -r line
+     do
+          echo "send $n"	    
+          echo "Processing address: $line"
 
-     n=$((n+1))
+          # Second command
+          echo "Executing sent ATN..."
+          aut tx make --to "$line" --value 0.3 | aut tx sign --password "$password" - | aut tx send -
+          
+          sleep .5
 
+          n=$((n+1))
+     done < "$file"
 done
