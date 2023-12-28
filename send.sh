@@ -25,7 +25,7 @@ do
 
           aut tx make --to "$line" --value 0.3 | aut tx sign --password "$password" - | aut tx send -
           
-          sleep 1
+          sleep 1.5
 
           n=$((n+1))
      done < "$file"
