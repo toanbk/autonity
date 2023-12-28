@@ -23,11 +23,9 @@ do
           echo "send $n"	    
           echo "Processing address: $line"
 
-          # Second command
-          echo "Executing sent ATN..."
           aut tx make --to "$line" --value 0.3 | aut tx sign --password "$password" - | aut tx send -
           
-          sleep .5
+          sleep 1
 
           n=$((n+1))
      done < "$file"
